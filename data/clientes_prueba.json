@@ -1,0 +1,112 @@
+[
+    {
+        "quincena": 1,
+        "ingresos": 8500,
+        "gastos": 6000,
+        "balance": 2500,
+        "saldo_actual": 2500,
+        "ingresos_acumulados": 8500,
+        "gastos_acumulados": 6000,
+        "meta_ahorro": 1,
+        "usuario": 1
+    },
+    {
+        "quincena": 2,
+        "ingresos": 9000,
+        "gastos": 7000,
+        "balance": 2000,
+        "saldo_actual": 4500,
+        "ingresos_acumulados": 17500,
+        "gastos_acumulados": 13000,
+        "meta_ahorro": 1,
+        "usuario": 1
+    },
+    {
+        "quincena": 1,
+        "ingresos": 5000,
+        "gastos": 6000,
+        "balance": -1000,
+        "saldo_actual": 1000,
+        "ingresos_acumulados": 5000,
+        "gastos_acumulados": 6000,
+        "meta_ahorro": 0,
+        "usuario": 2
+    },
+    {
+        "quincena": 2,
+        "ingresos": 7000,
+        "gastos": 8000,
+        "balance": -1000,
+        "saldo_actual": 0,
+        "ingresos_acumulados": 12000,
+        "gastos_acumulados": 14000,
+        "meta_ahorro": 0,
+        "usuario": 2
+    },
+    {
+        "quincena": 1,
+        "ingresos": 9500,
+        "gastos": 4000,
+        "balance": 5500,
+        "saldo_actual": 5500,
+        "ingresos_acumulados": 9500,
+        "gastos_acumulados": 4000,
+        "meta_ahorro": 1,
+        "usuario": 3
+    },
+    {
+        "quincena": 2,
+        "ingresos": 10000,
+        "gastos": 5000,
+        "balance": 5000,
+        "saldo_actual": 10500,
+        "ingresos_acumulados": 19500,
+        "gastos_acumulados": 9000,
+        "meta_ahorro": 1,
+        "usuario": 3
+    },
+    {
+        "quincena": 1,
+        "ingresos": 7000,
+        "gastos": 5000,
+        "balance": 2000,
+        "saldo_actual": 2000,
+        "ingresos_acumulados": 7000,
+        "gastos_acumulados": 5000,
+        "meta_ahorro": 1,
+        "usuario": 4
+    },
+    {
+        "quincena": 2,
+        "ingresos": 6000,
+        "gastos": 7000,
+        "balance": -1000,
+        "saldo_actual": 1000,
+        "ingresos_acumulados": 13000,
+        "gastos_acumulados": 12000,
+        "meta_ahorro": 0,
+        "usuario": 4
+    },
+    {
+        "quincena": 1,
+        "ingresos": 8000,
+        "gastos": 3000,
+        "balance": 5000,
+        "saldo_actual": 5000,
+        "ingresos_acumulados": 8000,
+        "gastos_acumulados": 3000,
+        "meta_ahorro": 1,
+        "usuario": 5
+    },
+    {
+        "quincena": 2,
+        "ingresos": 8500,
+        "gastos": 4000,
+        "balance": 4500,
+        "saldo_actual": 9500,
+        "ingresos_acumulados": 16500,
+        "gastos_acumulados": 7000,
+        "meta_ahorro": 1,
+        "usuario": 5
+    }
+]

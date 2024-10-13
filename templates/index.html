@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="{{ url_for('static', filename='img/banorte_favicon.png') }}" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación Bancaria - Banorte</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #c95151;
+        }
+        .navbar-brand {
+            color: white;
+        }
+        .navbar-nav a {
+            color: white;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        h2 {
+            color: #fbf7f7;
+        }
+        .carousel-item {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .banorte-logo {
+            position: absolute; /* Para que esté por encima del fondo */
+            top: 0; /* Posición en la parte superior de la barra */
+            left: 80px; /* Separación desde el lado izquierdo */
+            z-index: 1000; /* Asegura que esté encima del fondo rojo */
+            max-height: 40px; /* Ajusta la altura máxima */
+            width: auto; /* Mantén el aspecto proporcional */
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d90000; position: relative;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <!-- Logo de Banorte con mayor tamaño y posición ajustada -->
+                <img src="{{ url_for('static', filename='img/image.png') }}" alt="Banorte Logo" width="150" height="auto" class="banorte-logo">
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Cuentas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Créditos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Ahorro e Inversión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Seguros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Formulario de Ingresos y Gastos -->
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h2>Ingresos y Gastos</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url_for('insert_data') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="ingresos" class="form-label">Ingresos:</label>
+                                <input type="number" step="0.01" class="form-control" id="ingresos" name="ingresos" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="gastos" class="form-label">Gastos:</label>
+                                <input type="number" step="0.01" class="form-control" id="gastos" name="gastos" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Saldo Actual -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Saldo Actual: ${{ balance }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Accordion Panel -->
+                <div class="accordion" id="accordionExample">
+                    <!-- Historial de Transacciones -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Historial de Transacciones
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Cantidad</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if transactions %}
+                                            {% for transaction in transactions %}
+                                            <tr>
+                                                <td>{{ transaction[0] }}</td>
+                                                <td>{{ transaction[1] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="2" class="text-center">No hay transacciones disponibles</td>
+                                            </tr>
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Predicción Meta de Ahorro -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Predicción Meta de Ahorro
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>¿Cumplirá su meta de ahorro?: <strong>{{ prediccion_meta_ahorro }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Situación Financiera -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Situación Financiera
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p><strong>{{ situacion }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carrusel para el Plan de Acción -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Plan de Acción
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        {% for plan in plan_accion %}
+                                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" class="{% if loop.index0 == 0 %}active{% endif %}"></li>
+                                        {% endfor %}
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        {% for plan in plan_accion %}
+                                        <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                                            <div class="d-block w-100 p-4">
+                                                <h4>Plan de Acción {{ loop.index }}</h4>
+                                                <p>{{ plan }}</p>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
