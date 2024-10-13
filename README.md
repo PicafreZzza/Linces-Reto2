@@ -42,15 +42,18 @@ Este proyecto simula una aplicación bancaria que permite a los usuarios ingresa
 ```bash
 project-root/
 │
-├── static/
-│   └── img/  # Aquí se almacenan imágenes, como el logo de Banorte
-│
-├── templates/
-│   └── index.html  # La interfaz principal de la aplicación
-│
-├── app.py  # El archivo principal del backend de la aplicación
-├── ai_model.py  # Archivo con la lógica para entrenar y hacer predicciones con el modelo de IA
-├── scaler.pkl  # Scaler entrenado para escalar los datos de los usuarios
-├── financial_model_v2.h5  # Modelo entrenado de IA
-├── README.md  # Este archivo
-└── requirements.txt  # Las dependencias necesarias para ejecutar el proyecto
+├── __pycache__/            # Archivos de caché de Python
+├── data/                   # Datos adicionales (no se especifica qué contiene)
+├── sql/                    # Posibles archivos SQL relacionados con la base de datos
+├── static/                 # Archivos estáticos (imágenes, estilos, etc.)
+│   └── img/                # Aquí se almacenan imágenes, como el logo de Banorte
+├── templates/              # Plantillas HTML utilizadas en la aplicación
+│   └── index.html          # La interfaz principal de la aplicación
+├── ai_model.py             # Archivo con la lógica para entrenar y hacer predicciones con el modelo de IA
+├── app.py                  # El archivo principal del backend de la aplicación
+├── financial_model.h5      # Modelo entrenado de IA versión anterior
+├── financial_model_v2.h5   # Modelo entrenado de IA versión actual
+├── probar_modelo.py        # Script para probar el modelo de IA
+├── scaler.pkl              # Scaler entrenado para escalar los datos de los usuarios
+└── README.md               # Este archivo
+
